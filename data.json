@@ -1,0 +1,421 @@
+{
+  "users": [
+    {
+      "id": "admin1",
+      "username": "admin",
+      "password": "admin123",
+      "role": "admin",
+      "name": "Reylan Evale",
+      "email": "reylan.evale@testify.edu"
+    },
+    {
+      "id": "teacher1",
+      "username": "teacher1",
+      "password": "teach123",
+      "role": "teacher",
+      "name": "Ivy Bernardino",
+      "email": "ivy.bernardino@testify.edu",
+      "classes": ["class1", "class2"]
+    },
+    {
+      "id": "teacher2",
+      "username": "teacher2",
+      "password": "teach123",
+      "role": "teacher",
+      "name": "Evelyn Samson",
+      "email": "evelyn.samson@testify.edu",
+      "classes": ["class3"]
+    },
+    {
+      "id": "teacher3",
+      "username": "teacher3",
+      "password": "teach123",
+      "role": "teacher",
+      "name": "Rose Reyes",
+      "email": "rose.reyes@testify.edu",
+      "classes": []
+    },
+    {
+      "id": "teacher4",
+      "username": "teacher4",
+      "password": "teach123",
+      "role": "teacher",
+      "name": "Digna Evale",
+      "email": "digna.evale@testify.edu",
+      "classes": []
+    },
+    {
+      "id": "student1",
+      "username": "student1",
+      "password": "stud123",
+      "role": "student",
+      "name": "Justine Pring",
+      "email": "justine.pring@testify.edu",
+      "classes": ["class1", "class3"]
+    },
+    {
+      "id": "student2",
+      "username": "student2",
+      "password": "stud123",
+      "role": "student",
+      "name": "Keith Punla",
+      "email": "keith.punla@testify.edu",
+      "classes": ["class1", "class2"]
+    },
+    {
+      "id": "student3",
+      "username": "student3",
+      "password": "stud123",
+      "role": "student",
+      "name": "Paul Enano",
+      "email": "paul.enano@testify.edu",
+      "classes": ["class2", "class3"]
+    },
+    {
+      "id": "student4",
+      "username": "student4",
+      "password": "stud123",
+      "role": "student",
+      "name": "Argie Gonzales",
+      "email": "argie.gonzales@testify.edu",
+      "classes": ["class1"]
+    },
+    {
+      "id": "student5",
+      "username": "student5",
+      "password": "stud123",
+      "role": "student",
+      "name": "Grace Garces",
+      "email": "grace.garces@testify.edu",
+      "classes": ["class2"]
+    },
+    {
+      "id": "student6",
+      "username": "student6",
+      "password": "stud123",
+      "role": "student",
+      "name": "Earl Galang",
+      "email": "earl.galang@testify.edu",
+      "classes": ["class1", "class3"]
+    },
+    {
+      "id": "student7",
+      "username": "student7",
+      "password": "stud123",
+      "role": "student",
+      "name": "Jericho Dineros",
+      "email": "jericho.dineros@testify.edu",
+      "classes": ["class3"]
+    },
+    {
+      "id": "student8",
+      "username": "student8",
+      "password": "stud123",
+      "role": "student",
+      "name": "Robert Reyese",
+      "email": "robert.reyese@testify.edu",
+      "classes": ["class1", "class2"]
+    },
+    {
+      "id": "student9",
+      "username": "student9",
+      "password": "stud123",
+      "role": "student",
+      "name": "Kel Aguilar",
+      "email": "kel.aguilar@testify.edu",
+      "classes": ["class2", "class3"]
+    },
+    {
+      "id": "student10",
+      "username": "student10",
+      "password": "stud123",
+      "role": "student",
+      "name": "Dee Meneses",
+      "email": "dee.meneses@testify.edu",
+      "classes": ["class1"]
+    }
+  ],
+  "classes": [
+    {
+      "id": "class1",
+      "name": "Introduction to Computer Science",
+      "subject": "Computer Science",
+      "teacherId": "teacher1",
+      "studentIds": ["student1", "student2", "student4", "student6", "student8", "student10"],
+      "description": "Fundamentals of programming and computational thinking"
+    },
+    {
+      "id": "class2",
+      "name": "Advanced Mathematics",
+      "subject": "Mathematics",
+      "teacherId": "teacher1",
+      "studentIds": ["student2", "student3", "student5", "student8", "student9"],
+      "description": "Calculus, linear algebra, and discrete mathematics"
+    },
+    {
+      "id": "class3",
+      "name": "Data Structures & Algorithms",
+      "subject": "Computer Science",
+      "teacherId": "teacher2",
+      "studentIds": ["student1", "student3", "student6", "student7", "student9"],
+      "description": "Essential data structures and algorithmic problem solving"
+    }
+  ],
+  "exams": [
+    {
+      "id": "exam1",
+      "classId": "class1",
+      "title": "Midterm Exam - Programming Basics",
+      "description": "Test covering variables, loops, and functions",
+      "duration": 45,
+      "totalScore": 100,
+      "enabled": true,
+      "createdBy": "teacher1",
+      "questions": [
+        {
+          "id": "q1",
+          "type": "multiple-choice",
+          "question": "What is the correct syntax to output 'Hello World' in JavaScript?",
+          "options": [
+            "echo('Hello World');",
+            "console.log('Hello World');",
+            "print('Hello World');",
+            "System.out.println('Hello World');"
+          ],
+          "correctAnswer": 1,
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "multiple-choice",
+          "question": "Which data type is used to store true/false values?",
+          "options": [
+            "String",
+            "Integer",
+            "Boolean",
+            "Float"
+          ],
+          "correctAnswer": 2,
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "question": "What does HTML stand for?",
+          "correctAnswer": "HyperText Markup Language",
+          "points": 15
+        },
+        {
+          "id": "q4",
+          "type": "essay",
+          "question": "Explain the difference between a for loop and a while loop. Provide examples.",
+          "points": 25
+        },
+        {
+          "id": "q5",
+          "type": "coding",
+          "question": "Write a JavaScript function that takes an array of numbers and returns the sum of all elements.",
+          "points": 40
+        }
+      ]
+    },
+    {
+      "id": "exam2",
+      "classId": "class1",
+      "title": "Final Exam - Web Development",
+      "description": "Comprehensive test on HTML, CSS, and JavaScript",
+      "duration": 60,
+      "totalScore": 100,
+      "enabled": false,
+      "createdBy": "teacher1",
+      "questions": [
+        {
+          "id": "q1",
+          "type": "multiple-choice",
+          "question": "Which HTML tag is used to define an internal style sheet?",
+          "options": [
+            "<css>",
+            "<style>",
+            "<script>",
+            "<link>"
+          ],
+          "correctAnswer": 1,
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "multiple-choice",
+          "question": "What does CSS stand for?",
+          "options": [
+            "Creative Style Sheets",
+            "Cascading Style Sheets",
+            "Computer Style Sheets",
+            "Colorful Style Sheets"
+          ],
+          "correctAnswer": 1,
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "question": "Name three CSS properties used for positioning elements.",
+          "correctAnswer": "position, top, left",
+          "points": 15
+        },
+        {
+          "id": "q4",
+          "type": "essay",
+          "question": "Describe the box model in CSS and explain its components.",
+          "points": 25
+        },
+        {
+          "id": "q5",
+          "type": "coding",
+          "question": "Write HTML and CSS code to create a responsive navigation bar with three links.",
+          "points": 40
+        }
+      ]
+    },
+    {
+      "id": "exam3",
+      "classId": "class2",
+      "title": "Calculus Quiz",
+      "description": "Derivatives and integrals",
+      "duration": 30,
+      "totalScore": 50,
+      "enabled": true,
+      "createdBy": "teacher1",
+      "questions": [
+        {
+          "id": "q1",
+          "type": "multiple-choice",
+          "question": "What is the derivative of x²?",
+          "options": [
+            "x",
+            "2x",
+            "x²",
+            "2x²"
+          ],
+          "correctAnswer": 1,
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "multiple-choice",
+          "question": "What is the integral of 1/x?",
+          "options": [
+            "x",
+            "ln(x)",
+            "1/x²",
+            "e^x"
+          ],
+          "correctAnswer": 1,
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "question": "Find the derivative of sin(x).",
+          "correctAnswer": "cos(x)",
+          "points": 15
+        },
+        {
+          "id": "q4",
+          "type": "essay",
+          "question": "Explain the fundamental theorem of calculus.",
+          "points": 15
+        }
+      ]
+    },
+    {
+      "id": "exam4",
+      "classId": "class3",
+      "title": "Data Structures Midterm",
+      "description": "Arrays, linked lists, stacks, and queues",
+      "duration": 50,
+      "totalScore": 100,
+      "enabled": true,
+      "createdBy": "teacher2",
+      "questions": [
+        {
+          "id": "q1",
+          "type": "multiple-choice",
+          "question": "What is the time complexity of accessing an element in an array by index?",
+          "options": [
+            "O(n)",
+            "O(log n)",
+            "O(1)",
+            "O(n²)"
+          ],
+          "correctAnswer": 2,
+          "points": 10
+        },
+        {
+          "id": "q2",
+          "type": "multiple-choice",
+          "question": "Which data structure follows LIFO (Last In First Out)?",
+          "options": [
+            "Queue",
+            "Stack",
+            "Array",
+            "Tree"
+          ],
+          "correctAnswer": 1,
+          "points": 10
+        },
+        {
+          "id": "q3",
+          "type": "short-answer",
+          "question": "What is the main advantage of a linked list over an array?",
+          "correctAnswer": "Dynamic size and efficient insertions/deletions",
+          "points": 15
+        },
+        {
+          "id": "q4",
+          "type": "essay",
+          "question": "Compare and contrast arrays and linked lists. Discuss their advantages and disadvantages.",
+          "points": 25
+        },
+        {
+          "id": "q5",
+          "type": "coding",
+          "question": "Implement a function to reverse a linked list.",
+          "points": 40
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "result1",
+      "examId": "exam1",
+      "studentId": "student1",
+      "answers": [
+        {"questionId": "q1", "answer": 1},
+        {"questionId": "q2", "answer": 2},
+        {"questionId": "q3", "answer": "HyperText Markup Language"},
+        {"questionId": "q4", "answer": "A for loop is used when you know the number of iterations..."},
+        {"questionId": "q5", "answer": "function sumArray(arr) { return arr.reduce((a,b) => a+b, 0); }"}
+      ],
+      "score": 85,
+      "totalScore": 100,
+      "submittedAt": "2026-01-25T14:30:00Z",
+      "gradedBy": "auto"
+    },
+    {
+      "id": "result2",
+      "examId": "exam3",
+      "studentId": "student2",
+      "answers": [
+        {"questionId": "q1", "answer": 1},
+        {"questionId": "q2", "answer": 1},
+        {"questionId": "q3", "answer": "cos(x)"},
+        {"questionId": "q4", "answer": "The fundamental theorem connects differentiation and integration..."}
+      ],
+      "score": 45,
+      "totalScore": 50,
+      "submittedAt": "2026-01-26T10:15:00Z",
+      "gradedBy": "auto"
+    }
+  ]
+}

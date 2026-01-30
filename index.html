@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://public-frontend-cos.metadl.com/mgx/img/favicon_atoms.ico" type="image/x-icon">
+    <title>TESTIFY - Smart Examination Management System</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="navbar hidden">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>TESTIFY</h2>
+            </div>
+            <div class="nav-user">
+                <span id="navUserName"></span>
+                <button id="logoutBtn" class="btn-secondary">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="page active">
+        <div class="login-container">
+            <div class="login-hero">
+                <img src="https://mgx-backend-cdn.metadl.com/generate/images/690571/2026-01-29/e6c09404-991e-45a2-bd79-119afbf25de1.png" alt="Classroom" class="hero-image">
+            </div>
+            <div class="login-form-wrapper">
+                <div class="login-form">
+                    <h1>Welcome to TESTIFY</h1>
+                    <p class="subtitle">Smart LAN-Based Examination Management System</p>
+                    
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" required placeholder="Enter username">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required placeholder="Enter password">
+                        </div>
+                        
+                        <button type="submit" class="btn-primary btn-block">Login</button>
+                    </form>
+                    
+                    <div class="demo-credentials">
+                        <h3>Demo Credentials</h3>
+                        <div class="credentials-grid">
+                            <div class="credential-item">
+                                <strong>Admin (Reylan Evale):</strong>
+                                <span>admin / admin123</span>
+                            </div>
+                            <div class="credential-item">
+                                <strong>Teacher (Ivy Bernardino):</strong>
+                                <span>teacher1 / teach123</span>
+                            </div>
+                            <div class="credential-item">
+                                <strong>Student (Justine Pring):</strong>
+                                <span>student1 / stud123</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminPage" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Super Admin Dashboard</h1>
+                <p>Manage users and view system reports</p>
+            </div>
+            
+            <div class="dashboard-tabs">
+                <button class="tab-btn active" data-tab="users">All Users</button>
+                <button class="tab-btn" data-tab="assignments">Class Assignments</button>
+                <button class="tab-btn" data-tab="reports">Reports</button>
+            </div>
+            
+            <!-- Users Tab -->
+            <div id="usersTab" class="tab-content active">
+                <div class="card">
+                    <h2>User Management</h2>
+                    <div id="usersList" class="users-list"></div>
+                </div>
+            </div>
+            
+            <!-- Assignments Tab -->
+            <div id="assignmentsTab" class="tab-content">
+                <div class="card">
+                    <h2>Assign Users to Classes</h2>
+                    <form id="assignmentForm" class="assignment-form">
+                        <div class="form-group">
+                            <label for="assignUser">Select User</label>
+                            <select id="assignUser" required></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="assignClass">Select Class</label>
+                            <select id="assignClass" required></select>
+                        </div>
+                        <button type="submit" class="btn-primary">Assign to Class</button>
+                    </form>
+                    <div id="assignmentsList" class="assignments-list"></div>
+                </div>
+            </div>
+            
+            <!-- Reports Tab -->
+            <div id="reportsTab" class="tab-content">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Users</h3>
+                        <p class="stat-number" id="totalUsers">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Classes</h3>
+                        <p class="stat-number" id="totalClasses">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Exams</h3>
+                        <p class="stat-number" id="totalExams">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Completed Exams</h3>
+                        <p class="stat-number" id="completedExams">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Teacher Dashboard -->
+    <div id="teacherPage" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Teacher Dashboard</h1>
+                <p>Manage your classes and exams</p>
+            </div>
+            
+            <div class="dashboard-tabs">
+                <button class="tab-btn active" data-tab="myClasses">My Classes</button>
+                <button class="tab-btn" data-tab="createClass">Create Class</button>
+                <button class="tab-btn" data-tab="createExam">Create Exam</button>
+                <button class="tab-btn" data-tab="results">Student Results</button>
+            </div>
+            
+            <!-- My Classes Tab -->
+            <div id="myClassesTab" class="tab-content active">
+                <div id="teacherClassesList" class="classes-grid"></div>
+            </div>
+            
+            <!-- Create Class Tab -->
+            <div id="createClassTab" class="tab-content">
+                <div class="card">
+                    <h2>Create New Class</h2>
+                    <form id="createClassForm">
+                        <div class="form-group">
+                            <label for="className">Class Name</label>
+                            <input type="text" id="className" required placeholder="e.g., Introduction to Programming">
+                        </div>
+                        <div class="form-group">
+                            <label for="classSubject">Subject</label>
+                            <input type="text" id="classSubject" required placeholder="e.g., Computer Science">
+                        </div>
+                        <div class="form-group">
+                            <label for="classDescription">Description</label>
+                            <textarea id="classDescription" rows="3" placeholder="Brief description of the class"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Create Class</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Create Exam Tab -->
+            <div id="createExamTab" class="tab-content">
+                <div class="card">
+                    <h2>Create New Exam</h2>
+                    <form id="createExamForm">
+                        <div class="form-group">
+                            <label for="examClass">Select Class</label>
+                            <select id="examClass" required></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="examTitle">Exam Title</label>
+                            <input type="text" id="examTitle" required placeholder="e.g., Midterm Exam">
+                        </div>
+                        <div class="form-group">
+                            <label for="examDescription">Description</label>
+                            <textarea id="examDescription" rows="2" placeholder="Brief description"></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="examDuration">Duration (minutes)</label>
+                                <input type="number" id="examDuration" required min="5" value="30">
+                            </div>
+                            <div class="form-group">
+                                <label for="examEnabled">Enable Exam</label>
+                                <select id="examEnabled">
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <h3>Add Questions</h3>
+                        <div id="questionsContainer"></div>
+                        <button type="button" id="addQuestionBtn" class="btn-secondary">+ Add Question</button>
+                        
+                        <button type="submit" class="btn-primary" style="margin-top: 20px;">Create Exam</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Results Tab -->
+            <div id="resultsTab" class="tab-content">
+                <div class="card">
+                    <h2>Student Results</h2>
+                    <div class="form-group">
+                        <label for="resultsClassFilter">Filter by Class</label>
+                        <select id="resultsClassFilter"></select>
+                    </div>
+                    <div id="resultsTableContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Dashboard -->
+    <div id="studentPage" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Student Dashboard</h1>
+                <p>View your classes and take exams</p>
+            </div>
+            
+            <div class="dashboard-tabs">
+                <button class="tab-btn active" data-tab="studentClasses">My Classes</button>
+                <button class="tab-btn" data-tab="availableExams">Available Exams</button>
+                <button class="tab-btn" data-tab="myResults">My Results</button>
+            </div>
+            
+            <!-- My Classes Tab -->
+            <div id="studentClassesTab" class="tab-content active">
+                <div id="studentClassesList" class="classes-grid"></div>
+            </div>
+            
+            <!-- Available Exams Tab -->
+            <div id="availableExamsTab" class="tab-content">
+                <div id="availableExamsList" class="exams-list"></div>
+            </div>
+            
+            <!-- My Results Tab -->
+            <div id="myResultsTab" class="tab-content">
+                <div id="studentResultsList" class="results-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exam Taking Page -->
+    <div id="examPage" class="page">
+        <div class="exam-container">
+            <div class="exam-header">
+                <div class="exam-info">
+                    <h2 id="examPageTitle"></h2>
+                    <p id="examPageDescription"></p>
+                </div>
+                <div class="exam-timer">
+                    <span class="timer-label">Time Remaining:</span>
+                    <span id="timerDisplay" class="timer-display">00:00</span>
+                </div>
+            </div>
+            
+            <div class="exam-progress">
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <span id="progressText" class="progress-text">Question 1 of 5</span>
+            </div>
+            
+            <div id="examQuestionContainer" class="exam-question-container"></div>
+            
+            <div class="exam-navigation">
+                <button id="prevQuestionBtn" class="btn-secondary">← Previous</button>
+                <button id="nextQuestionBtn" class="btn-primary">Next →</button>
+                <button id="submitExamBtn" class="btn-primary hidden">Submit Exam</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Detail Page -->
+    <div id="resultDetailPage" class="page">
+        <div class="container">
+            <div class="page-header">
+                <button id="backToResultsBtn" class="btn-secondary">← Back to Results</button>
+                <h1>Exam Results</h1>
+            </div>
+            <div id="resultDetailContent"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
