@@ -364,21 +364,34 @@ async function handleCreateClass(e) {
     currentUser.classes.push(newClass.id);
     
     saveData();
+
+    // 🔥 FIX: Sync currentUser properly
+    currentUser = appData.users.find(u => u.id === currentUser.id);
+    localStorage.setItem('testifySession', JSON.stringify(currentUser));
+
     showToast('Class created successfully!', 'success');
     e.target.reset();
+
+    // 🔥 Force UI refresh
     loadTeacherClasses();
     loadExamClassSelect();
+    loadTeacherDashboard();
 }
+
 
 function loadExamClassSelect() {
     const select = document.getElementById('examClass');
     select.innerHTML = '<option value="">Select Class</option>';
     
-    const teacherClasses = appData.classes.filter(c => c.teacherId === currentUser.id);
+    const teacherClasses = appData.classes.filter(c => 
+        String(c.teacherId) === String(currentUser.id)
+    );
+
     teacherClasses.forEach(cls => {
         select.innerHTML += `<option value="${cls.id}">${cls.name}</option>`;
     });
 }
+
 
 let questionCount = 0;
 
@@ -416,19 +429,19 @@ function addQuestionField() {
             <div class="options-container">
                 <div class="option-input-group">
                     <input type="radio" name="correct-${questionCount}" value="0" checked>
-                    <input type="text" placeholder="Option 1" required>
+                    <input type="text" placeholder="Option 1">
                 </div>
                 <div class="option-input-group">
                     <input type="radio" name="correct-${questionCount}" value="1">
-                    <input type="text" placeholder="Option 2" required>
+                    <input type="text" placeholder="Option 2">
                 </div>
                 <div class="option-input-group">
                     <input type="radio" name="correct-${questionCount}" value="2">
-                    <input type="text" placeholder="Option 3" required>
+                    <input type="text" placeholder="Option 3">
                 </div>
                 <div class="option-input-group">
                     <input type="radio" name="correct-${questionCount}" value="3">
-                    <input type="text" placeholder="Option 4" required>
+                    <input type="text" placeholder="Option 4">
                 </div>
             </div>
         </div>
@@ -445,13 +458,17 @@ window.updateQuestionFields = function(id) {
     const questionDiv = document.getElementById(`question-${id}`);
     const type = questionDiv.querySelector('.question-type').value;
     const optionsArea = questionDiv.querySelector('.options-area');
-    
+    const optionInputs = questionDiv.querySelectorAll('.option-input-group input[type="text"]');
+
     if (type === 'multiple-choice') {
         optionsArea.style.display = 'block';
+        optionInputs.forEach(input => input.setAttribute('required', 'required'));
     } else {
         optionsArea.style.display = 'none';
+        optionInputs.forEach(input => input.removeAttribute('required'));
     }
 };
+
 
 async function handleCreateExam(e) {
     e.preventDefault();
@@ -468,6 +485,11 @@ async function handleCreateExam(e) {
     }
     
     const questions = [];
+    if (document.querySelectorAll('.question-item').length === 0) {
+        showToast('Please add at least one question', 'error');
+        return;
+    }
+
     let totalScore = 0;
     
     document.querySelectorAll('.question-item').forEach((qDiv, index) => {
@@ -532,7 +554,10 @@ function loadResultsFilter() {
     const select = document.getElementById('resultsClassFilter');
     select.innerHTML = '<option value="">All Classes</option>';
     
-    const teacherClasses = appData.classes.filter(c => c.teacherId === currentUser.id);
+    const teacherClasses = appData.classes.filter(c => 
+        String(c.teacherId) === String(currentUser.id)
+    );
+
     teacherClasses.forEach(cls => {
         select.innerHTML += `<option value="${cls.id}">${cls.name}</option>`;
     });
